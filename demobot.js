@@ -11,6 +11,7 @@ app.post('/', function(req, res) {
   var commit = req.body.head_commit;
   setStatus(commit.id, 'pending', 'Running automated checks...', function(res) {
     setTimeout(function() {
+      // If the commit message contained the word 'fix', say the build was successful; otherwise it's a failure
       if (commit.message.toLowerCase().indexOf('fix') < 0)
         setStatus(commit.id, 'failure', 'ISS not back to waypoint -- waypoint primary: Saturn, predicted primary: Sun');
       else
