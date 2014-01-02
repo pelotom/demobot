@@ -20,12 +20,14 @@ app.post('/', function(req, res) {
   });
 });
 
+var accessToken = ???;
+
 function setStatus(commit, state, desc, callback) {
     var options = {
       hostname: 'api.github.com',
       path: '/repos/pelotom/github-api-fun/statuses/' + commit,
       method: 'POST',
-      auth: '2bb993209338adfeead0d6810225bde8df0bb083:x-oauth-basic',
+      auth: accessToken + ':x-oauth-basic',
       headers: {
         'User-Agent': 'TestBot/0.0'
       }
