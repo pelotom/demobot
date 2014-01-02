@@ -1,4 +1,4 @@
-var http = require('https'),
+var https = require('https'),
     express = require('express');
 
 var app = express();
@@ -39,7 +39,7 @@ function setStatus(commit, state, desc, callback) {
 
     console.log('setting status for commit', commit, 'to', state);
 
-    var req = http.request(options, callback);
+    var req = https.request(options, callback);
 
     req.on('error', function(e) {
     	    console.log('problem with request: ' + JSON.stringify(e, null, 4));
